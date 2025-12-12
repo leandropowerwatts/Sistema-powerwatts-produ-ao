@@ -1,0 +1,279 @@
+* { box-sizing: border-box; margin:0; padding:0; font-family: Arial, sans-serif; }
+body { background:#f5f7fa; color:#333; }
+
+/* Cabeçalho */
+.header {
+  background:#0d47a1; color:#fff;
+  display:flex; align-items:center; padding:1rem;
+}
+.header .logo { height:32px; margin-right:.5rem; }
+.header h1 { font-size:1.5rem; }
+
+/* Controles de topo */
+.top-controls {
+  display:flex; gap:.5rem; padding:1rem;
+}
+.top-controls input {
+  flex:1; padding:.5rem;
+  border:1px solid #ccc; border-radius:4px;
+}
+
+/* Botões gerais */
+.btn {
+  padding:.5rem 1rem; border:none;
+  border-radius:4px; cursor:pointer;
+}
+.btn-new { background:#2e7d32; color:#fff; }
+.btn-secondary { background:#455a64; color:#fff; }
+
+/* Resumo */
+.summary {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1rem; padding:1rem;
+}
+.summary .card {
+  background:#fff;
+  border-left:6px solid #0d47a1;
+  padding:1rem; border-radius:4px;
+  text-align:center;
+}
+
+/* Filtros */
+.filters {
+  display:flex; align-items:center;
+  gap:.5rem; padding:0 1rem 1rem;
+  flex-wrap:wrap;
+}
+
+/* Wrapper dos botões de status */
+.status-filters {
+  display: flex;
+  flex-wrap: wrap;        /* quebra em linha nova quando não cabe */
+  gap: 0.5rem 0.75rem;     /* espaçamento horizontal/vertical */
+  margin-bottom: 1rem;     /* espaço abaixo dos botões */
+}
+
+/* Botões de filtro de status */
+.filter-btn {
+  background:#e0e0e0;
+  color:#333; border:none;
+  border-radius:20px;
+  padding:.5rem 1rem;
+  margin-bottom:.5rem;     /* espaço vertical ao quebrar linha */
+}
+.filter-btn.active {
+  background:#0d47a1; color:#fff;
+}
+
+/* Dropdown de setor */
+#sectorFilter {
+  padding:.5rem;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+/* Totais por setor */
+.totals-sector {
+  padding:1rem;
+  display:grid; gap:.75rem;
+}
+.totals-sector .sector-card {
+  background:#fff;
+  border-left:6px solid #0d47a1;
+  padding:.75rem; border-radius:4px;
+}
+
+/* Lista de pedidos */
+.orders-list {
+  padding:1rem;
+  display:grid; gap:1rem;
+}
+.order-card {
+  background:#fff;
+  border-left:6px solid #ffeb3b;
+  padding:1rem; border-radius:4px;
+  position:relative;
+}
+.order-card.finalizado { border-left-color:#4caf50; }
+.order-card.atrasados  { border-left-color:#f44336; }
+
+.order-card img {
+  max-width:100%; border-radius:4px;
+  margin-top:.5rem;
+}
+.order-card .actions {
+  margin-top:.5rem; display:flex; gap:.5rem;
+}
+.order-card .actions button {
+  flex:1;
+}
+
+/* Modal */
+.modal {
+  display:none;
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.5);
+  align-items:center; justify-content:center;
+}
+.modal-content {
+  background:#fff; padding:1rem;
+  border-radius:4px;
+  width:90%; max-width:400px;
+  max-height:90%; overflow-y:auto;
+  position:relative;
+}
+.close-btn {
+  position:absolute; top:.5rem; right:.5rem;
+  font-size:1.5rem; cursor:pointer;
+}
+
+/* Formulário dentro do modal */
+#orderForm label {
+  display:block; margin-top:.75rem;
+  font-weight:bold;
+}
+#orderForm input,
+#orderForm select,
+#orderForm textarea {
+  width:100%; padding:.5rem;
+  border:1px solid #ccc; border-radius:4px;
+  margin-top:.25rem;
+}
+.form-actions {
+  display:flex; justify-content:flex-end;
+  gap:.5rem; margin-top:1rem;
+}
+.form-actions .btn-cancel {
+  background:#757575; color:#fff;
+}
+.form-actions .btn-save {
+  background:#2e7d32; color:#fff;
+}
+
+/* Estilos para o checkbox personalizado */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Esconde o checkbox padrão */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Cria um checkbox personalizado */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* Ao passar o mouse, adiciona uma cor de fundo cinza */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* Quando o checkbox está marcado, muda a cor de fundo */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Cria o indicador de marcação (escondido quando não marcado) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Mostra o indicador de marcação quando marcado */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Estilo do indicador de marcação */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+/* Estilo específico para botão de ficha tirada */
+.btn-ficha-tirada {
+  background: #2196f3 !important;
+  color: white !important;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-ficha-tirada:hover {
+  background: #1976d2 !important;
+}
+
+.btn-ficha-nao-tirada {
+  background: #ff9800 !important;
+  color: white !important;
+}
+
+.btn-ficha-nao-tirada:hover {
+  background: #f57c00 !important;
+}
+
+
+
+.date-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem; /* Adiciona margem superior para mover para baixo */
+}
+
+.date-filters label {
+  font-weight: bold;
+}
+
+.date-filters input[type="date"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.date-filters .btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #455a64; /* Cor do botão secundário */
+  color: #fff;
+}
+
+
